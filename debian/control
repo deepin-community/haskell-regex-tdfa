@@ -1,0 +1,66 @@
+Source: haskell-regex-tdfa
+Maintainer: Debian Haskell Group <pkg-haskell-maintainers@lists.alioth.debian.org>
+Uploaders: Erik de Castro Lopo <erikd@mega-nerd.com>
+Priority: optional
+Section: haskell
+Rules-Requires-Root: no
+Build-Depends:
+ cdbs,
+ debhelper (>= 10),
+ ghc (>= 8.4.3),
+ ghc-prof,
+ haskell-devscripts (>= 0.13),
+ libghc-regex-base-dev (>= 0.94),
+ libghc-regex-base-dev (<< 0.95),
+ libghc-regex-base-prof,
+Build-Depends-Indep:
+ ghc-doc,
+ libghc-regex-base-doc,
+Build-Conflicts: libghc-parsec2-dev
+Standards-Version: 4.5.0
+Homepage: https://hackage.haskell.org/package/regex-tdfa
+Vcs-Browser: https://salsa.debian.org/haskell-team/DHG_packages/tree/master/p/haskell-regex-tdfa
+Vcs-Git: https://salsa.debian.org/haskell-team/DHG_packages.git [p/haskell-regex-tdfa]
+X-Description: Haskell library for a tagged DFA regex engine
+ A pure Haskell alternative to GHC's Text.Regex module (with some
+ enhancements). The Text.Regex module marshalls the data back and forth to
+ c-arrays to call libc and this is far too slow (and strict).
+ .
+ This module parses regular expression Strings using a Parsec parser and
+ creates an internal data structure (Text.Regex.Lazy.Pattern). This is then
+ transformed a DFA table for matching against the input String or
+ FastPackedString. The input string is consumed lazily, so it may be an
+ arbitrarily long or infinite source.
+
+Package: libghc-regex-tdfa-dev
+Architecture: any
+Depends: ${haskell:Depends}, ${misc:Depends}, ${shlibs:Depends}
+Recommends: ${haskell:Recommends}
+Suggests: ${haskell:Suggests}
+Provides: ${haskell:Provides}
+Description: ${haskell:ShortDescription}${haskell:ShortBlurb}
+ ${haskell:LongDescription}
+ .
+ ${haskell:Blurb}
+
+Package: libghc-regex-tdfa-prof
+Architecture: any
+Depends: ${haskell:Depends}, ${misc:Depends}
+Recommends: ${haskell:Recommends}
+Suggests: ${haskell:Suggests}
+Provides: ${haskell:Provides}
+Description: ${haskell:ShortDescription}${haskell:ShortBlurb}
+ ${haskell:LongDescription}
+ .
+ ${haskell:Blurb}
+
+Package: libghc-regex-tdfa-doc
+Architecture: all
+Section: doc
+Depends: ${haskell:Depends}, ${misc:Depends}
+Recommends: ${haskell:Recommends}
+Suggests: ${haskell:Suggests}
+Description: ${haskell:ShortDescription}${haskell:ShortBlurb}
+ ${haskell:LongDescription}
+ .
+ ${haskell:Blurb}
